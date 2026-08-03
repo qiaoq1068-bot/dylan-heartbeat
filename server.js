@@ -698,7 +698,9 @@ app.post("/v1/chat/completions", async (req, reply) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.TARGET_API_KEY}`
+            "Accept": "application/json",
+            "User-Agent": "Kelivo/1.0",
+            "Authorization: `Bearer ${process.env.TARGET_API_KEY}`
       },
       body: JSON.stringify({ ...body, messages: llmMessages })
     });
