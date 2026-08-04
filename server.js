@@ -695,15 +695,15 @@ app.post("/v1/chat/completions", async (req, reply) => {
 
     // 请求模型
     const response = await fetch(TARGET_API_URL, {
-      method: "POST",
-      headers: {
+    method: "POST",
+    headers: {
         "Content-Type": "application/json",
-            "Accept": "application/json",
-            "User-Agent": "Kelivo/1.0",
-            "Authorization: `Bearer ${process.env.TARGET_API_KEY}`
-      },
-      body: JSON.stringify({ ...body, messages: llmMessages })
-    });
+        "Accept": "application/json",
+        "User-Agent": "Kelivo/1.0",
+        Authorization: `Bearer ${process.env.TARGET_API_KEY}`
+    },
+    body: JSON.stringify({ ...body, messages: llmMessages })
+});
 
     const upstreamContentType = response.headers.get("content-type") || "";
     const shouldStreamResponse = requestedStream || upstreamContentType.includes("text/event-stream");
