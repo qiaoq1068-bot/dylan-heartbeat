@@ -701,7 +701,7 @@ app.post("/v1/chat/completions", async (req, reply) => {
       },
       body: JSON.stringify({ ...body, messages: llmMessages })
     });
-
+console.log(response.status);
     const upstreamContentType = response.headers.get("content-type") || "";
     const shouldStreamResponse = requestedStream || upstreamContentType.includes("text/event-stream");
 
